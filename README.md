@@ -4,7 +4,7 @@ English clarification: all contents in this repository, including comments, func
 
 ___
 ### Introducción
-Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir, para cohetería experimental y modelista. El mismo controla tres salidas visuales, una auditiva, una de movimiento, otra eléctrica de potencia (MOSFET), y un sistema de datalog hasta a 181 Hz en tarjeta SD. Las unidades de medición utilizadas responden al SI, con algunas excepciones puntuales.
+Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir, para cohetería experimental y modelista. El mismo controla tres salidas visuales, una auditiva, una de movimiento, otra eléctrica de potencia (MOSFET), y un sistema de datalog hasta a 181 Hz en tarjeta SD. Actualmente el código está diseñado para lanzamientos con cohetes de agua con alta aceleración, y despliegue de paracaídas con un servomotor. Las unidades de medición utilizadas responden al SI, con algunas excepciones puntuales.
 
 ### Computadora de vuelo
 #### Componentes
@@ -45,6 +45,7 @@ En la release actual ([v1.0.0](https://github.com/Quintana-S-E/Zafirsoft_R2/rele
 + [ ] Control de buzzer pasivo.
 + [ ] Implementar un sistema para la creación de nuevos nombres para cada archivo de datalog.
 + [ ] Mover todos los mensajes del código a un archivo en la SD para ahorrar memoria.
++ [ ] Añadir nuevos estados y métodos de detección de fases de vuelo para cohetería con combustible sólido (actualmente sólo para cohetes de agua).
 
 ### Changelog
 + [v1.0.0 Separación en headers](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0) ¡primera versión!

@@ -116,7 +116,7 @@ File ArchivoSD;
 // Datos.h
 void registrarDatosMilisegundos(unsigned long Adelay_escrituras);
 void escribirDatos();
-inline void registrarUltimosDatos();
+inline void registrarUltimosDatos(unsigned long Adelay);
 unsigned long ultima_vez_escritura_datos = 0;
 
 // Tiempo.h

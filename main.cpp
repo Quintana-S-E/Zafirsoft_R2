@@ -87,7 +87,7 @@ void loop()
 		break;
 
 	case 3: // tierra firme, tomar datos finales y terminar procesos
-		registrarUltimosDatos();
+		registrarUltimosDatos(500);
 		finalizarProcesos();
 		break;
 	}

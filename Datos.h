@@ -39,8 +39,8 @@ void escribirDatos()
 
 //==================================================================================================================//
 
-inline void registrarUltimosDatos() // llamado en estado = 3
+inline void registrarUltimosDatos(unsigned long Adelay) // llamado en estado = 3
 {
 	if (tiempo_actual - tiempo_aterrizaje <= TIEMPO_REGISTRO_DESPUES_ATERRIZAR)
-		registrarDatosMilisegundos(500);
+		registrarDatosMilisegundos(Adelay);
 }

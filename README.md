@@ -1,9 +1,10 @@
 # Zafirsoft_R2
 
+English clarification: all contents in this repository, including comments, function and variable names, and any documentation are (mostly) in Spanish. And they will continue to be.
 
+___
 ### Introducción
-Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir, para cohetería experimental y modelista. Posee tres salidas visuales, una auditiva,
-una de movimiento, otra eléctrica de potencia (MOSFET), y un sistema de datalog hasta a 181 Hz en tarjeta SD.
+Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir, para cohetería experimental y modelista. El mismo controla tres salidas visuales, una auditiva, una de movimiento, otra eléctrica de potencia (MOSFET), y un sistema de datalog hasta a 181 Hz en tarjeta SD.
 
 ### Computadora de vuelo
 #### Componentes

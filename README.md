@@ -1,10 +1,10 @@
 # Zafirsoft_R2
 
-English clarification: all contents in this repository, including comments, function and variable names, and any documentation are (mostly) in Spanish. And they will continue to be.
+English clarification: all contents in this repository, including comments, function and variable names, and any documentation are (mostly) in Spanish. And they will continue to be. All units are metric as well.
 
 ___
 ### Introducción
-Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir, para cohetería experimental y modelista. El mismo controla tres salidas visuales, una auditiva, una de movimiento, otra eléctrica de potencia (MOSFET), y un sistema de datalog hasta a 181 Hz en tarjeta SD.
+Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir, para cohetería experimental y modelista. El mismo controla tres salidas visuales, una auditiva, una de movimiento, otra eléctrica de potencia (MOSFET), y un sistema de datalog hasta a 181 Hz en tarjeta SD. Las unidades de medición utilizadas responden al SI, con algunas excepciones puntuales.
 
 ### Computadora de vuelo
 #### Componentes
@@ -20,13 +20,26 @@ Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir
 #### Capacidades
 + Detección de despegue, apogeo y aterrizaje.
 + Despliegue de paracaídas (doble, programable).
++ Indicación de estado visual y auditiva.
 + Medición de:
   + Aceleración en los tres ejes, hasta ±16 g.
   + Velocidades de precesión (giroscopios) en los tres ejes, hasta ±2000 ${deg} \over {s}$.
   + Altitud relativa y absoluta, desde -500 hasta 9000 m s. n. m.
+  + Temperatura MPU6050 y BMP280.
 + Recopilación rápida (hasta de 181 Hz: 5,52 ms promedio entre escrituras) de datos csv en tarjeta SD de hasta 32 GB.
 + Alta velocidad del loop en vuelo (~250 Hz sin datalog [3,42-3,8 ms por leer sensores], y ~181 Hz con datalog [5,52 ms totales]).
 + Alimentación desde 6 hasta 20 V no regulados.
+
+### Uso de memoria
+En la release actual ([v1.0.0](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0)), en PlatformIO, el código se compila utilizando 1355 bytes **(66,2 %)** de RAM, y 27298 bytes **(88,9 %)** de FLASH.
+
+### Librerías utilizadas
++ [Adafruit_BMP280_Library](https://github.com/adafruit/Adafruit_BMP280_Library)
++ [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor)
++ Arduino SD
++ Arduino Servo
++ Arduino SPI
++ Arduino Wire
 
 ### Próximos cambios
 + [ ] Control de buzzer pasivo.

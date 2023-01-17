@@ -31,7 +31,7 @@ Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir
 + Alimentación desde 6 hasta 20 V no regulados.
 
 ### Uso de memoria
-En la release actual ([v1.0.0](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0)), en PlatformIO, el código se compila utilizando 1355 bytes **(66,2 %)** de RAM, y 27298 bytes **(88,9 %)** de FLASH.
+En la release actual ([v1.0.1](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.1)), en PlatformIO, el código se compila utilizando 1355 bytes **(66,2 %)** de RAM, y 27298 bytes **(88,9 %)** de FLASH.
 
 ### Librerías utilizadas
 + [Adafruit_BMP280_Library](https://github.com/adafruit/Adafruit_BMP280_Library)
@@ -48,4 +48,5 @@ En la release actual ([v1.0.0](https://github.com/Quintana-S-E/Zafirsoft_R2/rele
 + [ ] Añadir nuevos estados y métodos de detección de fases de vuelo para cohetería con combustible sólido (actualmente sólo para cohetes de agua).
 
 ### Changelog
-+ [v1.0.0 Separación en headers](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0) ¡primera versión!
++ [v1.0.0 Separación en headers](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0)
++ [v1.0.1 Pase de argumentos en main.cpp para mejorar legibilidad](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.1)

@@ -76,7 +76,7 @@ inline void detectarLanzamiento();
 void ejecutarConfiguracionDespegue();
 void detectarApogeo();
 inline void detectarAterrizaje();
-inline void finalizarProcesos();
+inline void finalizarProcesos(unsigned long Aespera_despues_de_aterrizar);
 float altura_anterior;
 unsigned long cuenta_comprobaciones_apogeo = 0;
 #define DELAY_APOGEO 250UL
@@ -116,7 +116,7 @@ File ArchivoSD;
 // Datos.h
 void registrarDatosMilisegundos(unsigned long Adelay_escrituras);
 void escribirDatos();
-inline void registrarUltimosDatos(unsigned long Adelay);
+inline void registrarUltimosDatos(unsigned long Adelay, unsigned long Atiempo_registro);
 unsigned long ultima_vez_escritura_datos = 0;
 
 // Tiempo.h

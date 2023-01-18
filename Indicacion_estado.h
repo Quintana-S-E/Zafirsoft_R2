@@ -96,3 +96,7 @@ void indicarEstado()
 		break;
 	}
 }
+
+//==================================================================================================================//
+
+inline void indicarProcesosFinalizados() { digitalWrite(LED_AMARILLO, HIGH); }

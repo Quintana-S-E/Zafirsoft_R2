@@ -33,7 +33,7 @@
 #define LED_AMARILLO 4
 #define BUZZER 8
 #define PYRO1 2
-#define SDcs 10
+#define SD_CS 10
 
 // Variables generales
 uint8_t estado = 0;
@@ -58,6 +58,7 @@ struct FlagsDeEstado
 inline void pitidosIniciales();
 void indicacionEstado0();
 void indicarEstado();
+inline void indicarProcesosFinalizados();
 unsigned long ultima_vez_indicacion_estado_0 = 0;
 uint8_t cuentaStateInd = 35;
 #define PITIDOS 3

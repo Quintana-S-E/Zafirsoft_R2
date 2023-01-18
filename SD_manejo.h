@@ -4,7 +4,7 @@
 
 void inicializarSDCard() // llamado en setup()
 {
-	if (!SD.begin(SDcs))
+	if (!SD.begin(SD_CS))
 	{
 		imprimirln("Falta tarjeta SD");
 		digitalWrite(LED_AMARILLO, HIGH);

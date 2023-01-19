@@ -11,7 +11,13 @@ void inicializarSDCard() // llamado en setup()
 		while (1)
 			;
 	}
-	ArchivoSD = SD.open("vuelo.txt", FILE_WRITE); //("vuelo.txt", O_CREAT | O_APPEND | O_WRITE);
+}
+
+//==================================================================================================================//
+
+void crearArchivoDatalogSD(const char *Anombre_archivo)
+{
+	ArchivoSD = SD.open(Anombre_archivo, FILE_WRITE); //("vuelo.txt", O_CREAT | O_APPEND | O_WRITE);
 	if (!ArchivoSD)
 	{
 		imprimirln("No se pudo abrir o modificar el archivo SD");

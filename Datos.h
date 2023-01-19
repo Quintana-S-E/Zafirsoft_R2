@@ -2,6 +2,31 @@
 
 #include "Declaraciones.h"
 
+void crearArchivosDatalog()
+{
+	char nombre_archivo[] = NOMBRE_BASE_ARCHIVO_DATALOG;
+
+	// probamos si existen archivos numerados, hasta llegar a un nombre que no exista
+	// i = 2 porque 2 es el siguiente número de vuelo a probar
+	for (uint8_t i = 2; i <= 99; i++)
+	{
+		if (SD.exists(nombre_archivo))
+		{
+			// el nombre base existe, incrementar el índice de 2 dígitos
+			nombre_archivo[6] = i/10 + '0';
+			nombre_archivo[7] = i%10 + '0';
+		}
+		else
+			// el nombre no existe, por lo que salimos del for() y creamos los archivos
+			break;
+	}
+
+	crearArchivoDatalogSD(nombre_archivo);
+	//crearArchivoDatalogFlash(nombre_archivo);
+}
+
+//==================================================================================================================//
+
 void registrarDatosMilisegundos(unsigned long Adelay_escrituras)
 {
 	unsigned long tiempo_transcurrido = tiempo_actual - ultima_vez_escritura_datos;

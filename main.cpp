@@ -38,8 +38,10 @@ void setup()
 	// Serial.println("¡Zafir se ha iniciado! Comenzando comprobaciones de los sistemas a bordo...");
 
 	inicializarSDCard();
+	//inicializarFlashChip();
+	crearArchivosDatalog();
 	// Serial.println("Tarjeta SD configurada con éxito! Calibrando el barómetro BMP280...");
-	
+
 	delay(2480);
 
 	inicializarBarometro();
@@ -66,7 +68,7 @@ void loop()
 	leerIMU();
 	altura_actual = devolverAltura(presion_inicial);
 	actualizarTiempo();
-	
+
 	switch (estado)
 	{
 	case 0: // plataforma

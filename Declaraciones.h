@@ -23,6 +23,7 @@
 #endif
 
 // Constantes de funcionamiento generales
+#define NOMBRE_BASE_ARCHIVO_DATALOG "VUELO_01.txt"
 #define COMA ","
 #define ALTURA_ATERRIZAJE 3.0F
 #define TIEMPO_REGISTRO_DESPUES_ATERRIZAR 10000UL
@@ -110,11 +111,13 @@ Adafruit_BMP280 Bmp;
 
 // SD_manejo.h
 void inicializarSDCard();
+void crearArchivoDatalogSD(const char *Anombre_archivo);
 inline void asegurarSDCard();
 inline void finalizarSDCard();
 File ArchivoSD;
 
 // Datos.h
+void crearArchivosDatalog();
 void registrarDatosMilisegundos(unsigned long Adelay_escrituras);
 void escribirDatos();
 inline void registrarUltimosDatos(unsigned long Adelay, unsigned long Atiempo_registro);

@@ -60,7 +60,7 @@ void indicacionEstado0();
 void indicarEstado();
 inline void indicarProcesosFinalizados();
 unsigned long ultima_vez_indicacion_estado_0 = 0;
-uint8_t cuentaStateInd = 35;
+uint8_t cuentaStateInd = 0;
 #define PITIDOS 3
 #define DELAY_ACTUALIZACION_BRILLO_LEDES 4UL
 enum LedesBuzzerBrilloEstados

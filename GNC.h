@@ -56,7 +56,7 @@ inline void finalizarProcesos(unsigned long Aespera_despues_de_aterrizar)
 	if (tiempo_actual - tiempo_aterrizaje > Aespera_despues_de_aterrizar)
 	{
 		finalizarSDCard(); // tiene una flag y se ejecuta una sola vez
-		// finalizar flashchip (poner los {})
+		// finalizar flashchip
 		indicarProcesosFinalizados();
 	}
 }

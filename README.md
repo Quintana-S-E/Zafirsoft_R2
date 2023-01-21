@@ -43,7 +43,7 @@ En la release actual ([v1.1.0](https://github.com/Quintana-S-E/Zafirsoft_R2/rele
 
 ### Próximos cambios
 + [ ] Control de buzzer pasivo.
-+ [ ] Implementar un sistema para la creación de nuevos nombres para cada archivo de datalog.
++ [x] Implementar un sistema para la creación de nuevos nombres para cada archivo de datalog ([v1.1.0-enum-datalog](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog)).
 + [ ] Mover todos los mensajes del código a un archivo en la SD para ahorrar memoria.
 + [ ] Añadir nuevos estados y métodos de detección de fases de vuelo para cohetería con combustible sólido (actualmente sólo para cohetes de agua).
 
@@ -51,3 +51,4 @@ En la release actual ([v1.1.0](https://github.com/Quintana-S-E/Zafirsoft_R2/rele
 + [v1.0.0 Separación en headers](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0)
 + [v1.0.1 Pase de argumentos en main.cpp para mejorar legibilidad](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.1)
 + [v1.1.0 Indicación visual de procesos finalizados](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0)
++ [v1.1.0-enum-datalog Enumeración de los archivos de datalog en base a los existentes en SD 00-99](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog)

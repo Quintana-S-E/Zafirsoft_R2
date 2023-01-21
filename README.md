@@ -31,7 +31,7 @@ Este es el código basado en el entorno Arduino de la computadora de vuelo Zafir
 + Alimentación desde 6 hasta 20 V no regulados.
 
 ### Uso de memoria
-En la release actual ([v1.0.1](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.1)), en PlatformIO, el código se compila utilizando 1355 bytes **(66,2 %)** de RAM, y 27298 bytes **(88,9 %)** de FLASH.
+En la release actual ([v1.1.0](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0)), en PlatformIO, el código se compila utilizando 1355 bytes **(66,2 %)** de RAM, y 27298 bytes **(88,9 %)** de FLASH. Sin embargo, en la release [v1.1.0-enum-datalog](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog), que cuenta con numeración automática en los archivos de datalog, el uso de memoria es de 1360 bytes **(66,4 %)** de RAM, y 27996 bytes **(91,1 %)** de FLASH.
 
 ### Librerías utilizadas
 + [Adafruit_BMP280_Library](https://github.com/adafruit/Adafruit_BMP280_Library)
@@ -43,10 +43,12 @@ En la release actual ([v1.0.1](https://github.com/Quintana-S-E/Zafirsoft_R2/rele
 
 ### Próximos cambios
 + [ ] Control de buzzer pasivo.
-+ [ ] Implementar un sistema para la creación de nuevos nombres para cada archivo de datalog.
++ [x] Implementar un sistema para la creación de nuevos nombres para cada archivo de datalog ([v1.1.0-enum-datalog](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog)).
 + [ ] Mover todos los mensajes del código a un archivo en la SD para ahorrar memoria.
 + [ ] Añadir nuevos estados y métodos de detección de fases de vuelo para cohetería con combustible sólido (actualmente sólo para cohetes de agua).
 
 ### Changelog
 + [v1.0.0 Separación en headers](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0)
 + [v1.0.1 Pase de argumentos en main.cpp para mejorar legibilidad](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.1)
++ [v1.1.0 Indicación visual de procesos finalizados](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0)
++ [v1.1.0-enum-datalog Enumeración de los archivos de datalog en base a los existentes en SD 00-99](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog)

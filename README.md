@@ -42,10 +42,15 @@ En la release actual ([v1.1.0](https://github.com/Quintana-S-E/Zafirsoft_R2/rele
 + Arduino Wire
 
 ### Próximos cambios
-+ [ ] Control de buzzer pasivo.
+#### Por programar
 + [x] Implementar un sistema para la creación de nuevos nombres para cada archivo de datalog ([v1.1.0-enum-datalog](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog)).
 + [ ] Mover todos los mensajes del código a un archivo en la SD para ahorrar memoria.
-+ [ ] Añadir nuevos estados y métodos de detección de fases de vuelo para cohetería con combustible sólido (actualmente sólo para cohetes de agua).
+
+#### Requieren mejoras de harwdare
++ Control de buzzer pasivo (involucra al menos +2,4% FLASH).
++ Añadir nuevos estados y métodos de detección de fases de vuelo para cohetería con combustible sólido (actualmente sólo para cohetes de agua).
++ Añadir control de memoria FLASH externa.
+  + Comprobación de datos en flashchip al inicio del programa, y pase a la SD.
 
 ### Changelog
 + [v1.0.0 Separación en headers](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0)

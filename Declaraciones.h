@@ -29,7 +29,7 @@
 
 // Pines
 #define PIN_SERVO 6
-#define LED_AZUL_ROJO 3
+#define LED_AZUL_ROJO 5
 #define LED_AMARILLO 4
 #define BUZZER 8
 #define PYRO1 2

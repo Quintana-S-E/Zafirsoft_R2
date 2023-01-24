@@ -45,7 +45,7 @@ float altura_actual;
 float aceleracion_x;
 int16_t aceleracion_x_raw, aceleracion_y_raw, aceleracion_z_raw;
 int16_t gyro_x, gyro_y, gyro_z;
-enum MensajesSD
+enum MensajesSD : unsigned int
 {
 	FALTA_SD,
 	ERROR_ARCHIVO_SD,
@@ -123,6 +123,7 @@ Adafruit_BMP280 Bmp;
 void inicializarSDCard();
 inline void asegurarSDCard();
 inline void finalizarSDCard();
+String mensajeSD(MensajesSD Amensaje);
 File ArchivoSD;
 
 // Datos.h

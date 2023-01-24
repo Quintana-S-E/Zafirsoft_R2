@@ -23,6 +23,19 @@ void inicializarSDCard() // llamado en setup()
 
 //==================================================================================================================//
 
+String mensajeSD(MensajesSD Amensaje)
+{
+	char nombre_archivo[15];
+	sprintf(nombre_archivo, "msj/%u.txt", Amensaje);
+
+	File ArchivoMensaje = SD.open(nombre_archivo, FILE_READ);
+	if (ArchivoMensaje)
+		return ArchivoMensaje.readStringUntil('\n');
+	return "";
+}
+
+//==================================================================================================================//
+
 inline void asegurarSDCard() // llamado en estado = 2
 {
 	if (!Flags.SD_card_asegurada)

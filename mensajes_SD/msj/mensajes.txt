@@ -1,0 +1,6 @@
+No se ha encontrado tarjeta SD
+No se pudo abrir o modificar el archivo de datos de la tarjeta SD
+No se ha encontrado el sensor de presión BMP280
+Temperatura: 
+ °C
+t(s),t_vuelo(s),Estado,AccelXraw,AccelYraw,AccelZraw,gyroX,gyroY,gyroZ,Altitud,AccelX(m/s2)

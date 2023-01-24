@@ -1,0 +1,1 @@
+t(s),t_vuelo(s),Estado,AccelXraw,AccelYraw,AccelZraw,gyroX,gyroY,gyroZ,Altitud,AccelX(m/s2)

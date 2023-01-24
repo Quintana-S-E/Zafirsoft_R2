@@ -53,7 +53,6 @@ enum MensajesSD : unsigned int
 	SD_TEMP_IGUAL,
 	SD_GRADO_CENT,
 	SD_CSV_NOMBRES_DATOS,
-
 	CANTIDAD_MENSAJES_SD
 };
 

@@ -6,7 +6,7 @@ void inicializarSDCard() // llamado en setup()
 {
 	if (!SD.begin(SD_CS))
 	{
-		imprimirln("Falta tarjeta SD");
+		imprimirln(mensajeSD(FALTA_SD));
 		digitalWrite(LED_AMARILLO, HIGH);
 		while (1)
 			;
@@ -14,7 +14,7 @@ void inicializarSDCard() // llamado en setup()
 	ArchivoSD = SD.open("vuelo.txt", FILE_WRITE); //("vuelo.txt", O_CREAT | O_APPEND | O_WRITE);
 	if (!ArchivoSD)
 	{
-		imprimirln("No se pudo abrir o modificar el archivo SD");
+		imprimirln(mensajeSD(ERROR_ARCHIVO_SD));
 		digitalWrite(LED_AMARILLO, HIGH);
 		while (1)
 			;

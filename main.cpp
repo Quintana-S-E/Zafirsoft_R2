@@ -45,10 +45,10 @@ void setup()
 	inicializarBarometro();
 	// Serial.println("BMP280 configurado con éxito! Estableciendo sistema de liberación...");
 
-	ArchivoSD.print("Temp: ");
+	ArchivoSD.print( mensajeSD(SD_TEMP_IGUAL) );
 	ArchivoSD.print( devolverTemperatura() );
-	ArchivoSD.println(" °C");
-	ArchivoSD.println("t(s),t_v(s),Estado,AcXr,AcYr,AcZr,gyroX,gyroY,gyroZ,Alt,AcX(m/s2)");
+	ArchivoSD.println( mensajeSD(SD_GRADO_CENT) );
+	ArchivoSD.println( mensajeSD(SD_CSV_NOMBRES_DATOS) );
 
 	Paracaidas.attach(PIN_SERVO, PULSOMIN, PULSOMAX);
 	Paracaidas.write(ANGULO_APERTURA);

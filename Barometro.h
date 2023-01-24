@@ -6,7 +6,7 @@ void inicializarBarometro() // llamado en setup()
 {
 	if (!Bmp.begin(0x76))
 	{
-		imprimirln("No se encontró sensor BMP280");
+		imprimirln(mensajeSD(ERROR_BMP280));
 		digitalWrite(LED_AMARILLO, HIGH);
 		while (1)
 			;

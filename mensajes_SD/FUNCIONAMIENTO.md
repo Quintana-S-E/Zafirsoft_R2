@@ -1,7 +1,8 @@
 # Funcionamiento de la lectura de mensajes desde la SD
 
 ### Introducción
-x
+El objetivo de este escrito es el de documentar el funcionamiento y modo de uso de la nueva funcionalidad del código Zafirsoft_R2 en su versión [v1.1.1-mensajes-SD](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.1-mensajes-SD): el almacenamiento y acceso a cadenas de texto guardadas en la tarjeta SD.
+Ya que la mayor preocupación durante el desarrollo de dicha funcionalidad fue el ahorro de memoria (FLASH sobre todo), el sistema implementado fue aquel que pudo disminuir en mayor proporción la cantidad de procesos a ejecutar por la computadora, creando así una serie de pasos a realizar para efectuar el mantenimiento y la modificación de las cadenas de texto.
 
 ### Computadora de vuelo
 #### Componentes

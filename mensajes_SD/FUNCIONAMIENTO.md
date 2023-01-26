@@ -1,57 +1,52 @@
 # Funcionamiento de la lectura de mensajes desde la SD
 
 ### Introducción
-El objetivo de este escrito es el de documentar el funcionamiento y modo de uso de la nueva funcionalidad del código Zafirsoft_R2 en su versión [v1.1.1-mensajes-SD](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.1-mensajes-SD): el almacenamiento y acceso a cadenas de texto guardadas en la tarjeta SD.
-Ya que la mayor preocupación durante el desarrollo de dicha funcionalidad fue el ahorro de memoria (FLASH sobre todo), el sistema implementado fue aquel que pudo disminuir en mayor proporción la cantidad de procesos a ejecutar por la computadora, creando así una serie de pasos a realizar para efectuar el mantenimiento y la modificación de las cadenas de texto.
+Mediante este escrito se pretende documentar el funcionamiento, mantenimiento y modo de uso de la nueva funcionalidad del código Zafirsoft_R2 en su versión [v1.1.1-mensajes-SD](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.1-mensajes-SD): el almacenamiento y acceso a cadenas de texto guardadas en la tarjeta SD.  
+Siendo el ahorro de memoria (especialmente FLASH) la mayor preocupación durante el desarrollo de la funcionalidad, se implementó en la computadora un sistema de lectura minimalista, que permitiese trasladar la mayor parte de los procesos y complejidad del problema a la "etapa 0" y los preparativos anteriores al vuelo.  
+Por ello, para efectuar el mantenimiento del código de tierra y la modificación de las cadenas de texto, se debe llevar a cabo una cuidadosa y específica serie de pasos, detallada aquí.
 
-### Computadora de vuelo
-#### Componentes
-+ Arduino Nano (ATmega328p U-TH @16 MHz. 2 KB RAM, 30 KB FLASH usable) **(NRFND)**. [datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
-+ Módulo sensor MPU6050; protocolo I2C **(NRFND)**. [datasheet](https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf)
-+ Módulo sensor BMP280; protocolo I2C. [datasheet](https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp280-ds001.pdf)
-+ Módulo lector microSD HW-125; protocolo SPI.
-+ N channel MOSFET 2SK3533-01 (7 Amperes continuos). [datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/422439/FUJI/2SK3533-01.html)
-+ Servomotor 9 g.
-+ Ledes X3: rojo y azul (juntos), y amarillo (independiente).
-+ Buzzer activo.
+## Lectura (Zafir)
+La lectura de los mensajes por parte de la computadora se lleva a cabo desde una carpeta de nombre "msj" en la tarjeta SD. En ella, los distintos mensajes se encuentran separados en archivos .txt propios, identificados simplemente por un número. Por ej: "0.txt" se encuentra dentro de la carpeta "msj", y contiene el texto "No se ha encontrado tarjeta SD".
 
-#### Capacidades
-+ Detección de despegue, apogeo y aterrizaje.
-+ Despliegue de paracaídas (doble, programable).
-+ Indicación de estado visual y auditiva.
-+ Medición de:
-  + Aceleración en los tres ejes, hasta ±16 g.
-  + Velocidades de precesión (giroscopios) en los tres ejes, hasta ±2000 ${deg} \over {s}$.
-  + Altitud relativa y absoluta, desde -500 hasta 9000 m s. n. m.
-  + Temperatura MPU6050 y BMP280.
-+ Recopilación rápida (hasta de 181 Hz: 5,52 ms promedio entre escrituras) de datos csv en tarjeta SD de hasta 32 GB.
-+ Alta velocidad del loop en vuelo (~250 Hz sin datalog [3,42-3,8 ms por leer sensores], y ~181 Hz con datalog [5,52 ms totales]).
-+ Alimentación desde 6 hasta 20 V no regulados.
+### Enum `MensajesSD`
+Cada mensaje de la computadora es identificado mediante uno de los enumeradores definidos en [Declaraciones.h](https://github.com/Quintana-S-E/Zafirsoft_R2/blob/8f13b2e4816df921160812402d2953c4189182b5/Declaraciones.h#L48):  
+```
+enum MensajesSD : unsigned int
+{
+	FALTA_SD,
+	ERROR_ARCHIVO_SD,
+	ERROR_BMP280,
+	SD_TEMP_IGUAL,
+	SD_GRADO_CENT,
+	SD_CSV_NOMBRES_DATOS,
+	CANTIDAD_MENSAJES_SD
+};
+```
+El valor de cada enumerador (en este caso desde 0U hasta 5U [más el contador]) corresponde así con el nombre del archivo .txt que contiene su mensaje. Por ej: `ERROR_BMP280` tiene un valor de 2U, y el archivo que contiene el mensaje de error del BMP280 se llama "2.txt".  
+De este modo, puede accederse a cada mensaje dando uno de estos enumeradores como argumento a la función `mensajeSD()`, la cual devuelve el mensaje solicitado.
 
-### Uso de memoria
-En la release actual ([v1.1.0](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0)), en PlatformIO, el código se compila utilizando 1354 bytes **(66,1 %)** de RAM, y 27304 bytes **(88,9 %)** de FLASH. Sin embargo, en la release [v1.1.0-enum-datalog](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog), que cuenta con numeración automática en los archivos de datalog, el uso de memoria es de 1360 bytes **(66,4 %)** de RAM, y 27996 bytes **(91,1 %)** de FLASH.
+### Función `mensajeSD()`
+Esta función de tipo `String` se encarga de acceder y devolver el mensaje correspondiente al solicitado en su argumento, y se encuentra definida en [SD_manejo.h](https://github.com/Quintana-S-E/Zafirsoft_R2/blob/8f13b2e4816df921160812402d2953c4189182b5/SD_manejo.h#L26):
+```
+String mensajeSD(MensajesSD Amensaje)
+{
+	char nombre_archivo[15];
+	sprintf(nombre_archivo, "msj/%u.txt", Amensaje);
 
-### Librerías utilizadas
-+ [Adafruit_BMP280_Library](https://github.com/adafruit/Adafruit_BMP280_Library)
-+ [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor)
-+ Arduino SD
-+ Arduino Servo
-+ Arduino SPI
-+ Arduino Wire
+	File ArchivoMensaje = SD.open(nombre_archivo, FILE_READ);
+	if (ArchivoMensaje)
+		return ArchivoMensaje.readStringUntil('\n');
+	return "";
+}
+```
+Ya que cada mensaje se encuentra identificado por un número, esta función llama a `SD.open()`, dando como dirección un char array del estilo "msj/n.txt" creado con `sprintf()`, siendo "n" el número correspondiente al mensaje (y enviado en la llamada como argumento). Si la apertura del archivo es exitosa, la función devuelve la `String` devuelta por `readStringUntil('\n')`. De no ser exitosa, la función devuelve una cadena vacía.
 
-### Próximos cambios
-#### Por programar
-+ [x] Implementar un sistema para la creación de nuevos nombres para cada archivo de datalog ([v1.1.0-enum-datalog](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog)).
-+ [ ] Mover todos los mensajes del código a un archivo en la SD para ahorrar memoria.
+## Creación de las cadenas de texto (Etapa 0)
+### Generación de los archivos
+Para que cada mensaje se encuentre en su propio archivo con nombre enumerado, no es necesaria la edición de cada archivo individual. En lugar de ello, cada mensaje debe guardarse en renglones individuales ordenados en el archivo [mensajes.txt](https://github.com/Quintana-S-E/Zafirsoft_R2/blob/v1.1.1-mensajes-SD/mensajes_SD/msj/mensajes.txt), guardado también en la carpeta "msj" de la SD.  
+Luego, en la propia Zafir, puede subirse el código del sketch [Generador_de_mensajes_txt_Zafir.ino](https://github.com/Quintana-S-E/Zafirsoft_R2/blob/v1.1.1-mensajes-SD/mensajes_SD/Generador_de_mensajes_txt_Zafir/Generador_de_mensajes_txt_Zafir.ino), modificando en él solamente la constante `CANTIDAD_MENSAJES_SD`, con el mismo valor del último enumerador del enum `MensajesSD`, que describe la cantidad de archivos a generar.
+Este sketch se encarga de abrir mensajes.txt, y una vez por cada mensaje leer la línea correspondiente y generar un archivo en donde escribir su contenido (_aunque el código no es muy legible ni tiene las mejores prácticas_).  
+El resultado luego de ejecutar la tarea es la creación, dentro de la carpeta "msj" contenida en la tarjeta SD, de la cantidad configurada de nuevos archivos de texto enumerados, tal como puede verse en la carpeta [msj](https://github.com/Quintana-S-E/Zafirsoft_R2/tree/v1.1.1-mensajes-SD/mensajes_SD/msj) incluida en el repositorio. 
 
-#### Requieren mejoras de harwdare
-+ Control de buzzer pasivo (involucra al menos +2,4% FLASH).
-+ Añadir nuevos estados y métodos de detección de fases de vuelo para cohetería con combustible sólido (actualmente sólo para cohetes de agua).
-+ Añadir control de memoria FLASH externa.
-  + Comprobación de datos en flashchip al inicio del programa, y pase a la SD.
-
-### Changelog
-+ [v1.0.0 Separación en headers](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.0)
-+ [v1.0.1 Pase de argumentos en main.cpp para mejorar legibilidad](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.0.1)
-+ [v1.1.0 Indicación visual de procesos finalizados](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0)
-+ [v1.1.0-enum-datalog Enumeración de los archivos de datalog en base a los existentes en SD 00-99](https://github.com/Quintana-S-E/Zafirsoft_R2/releases/tag/v1.1.0-enum-datalog)
+### Organización de los mensajes
+Para lograr una mejor organización y coordinación ente el archivo modificable "mensajes.txt" y el código de Zafir, se encuentra en la carpeta [mensajes_SD](https://github.com/Quintana-S-E/Zafirsoft_R2/tree/v1.1.1-mensajes-SD/mensajes_SD) un excel con cada frase ordenada y enumerada.
